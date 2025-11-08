@@ -1,0 +1,97 @@
+#main{
+    display: flex;
+    background-color:whitesmoke;
+
+}
+.register{
+    width: 50%;
+    margin: 10px 10px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    border: 1px solid black;
+    border-right: none;
+    background-color: lightgray;
+    padding: 10px;
+    background-color: #dbd56e;
+}
+#result{
+    width: 50%;
+    margin: 10px 10px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    border: 1px solid black;
+    border-left: none;
+    background-color: lightgray;
+    padding: 10px;
+    background-color: #dbd56e;
+}
+.container{
+    width: 200%;
+    border: 1px solid black; 
+    margin: 10px 10px;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    background-image: url("Voting\ Election\ Day\ GIF\ by\ Lo\ Harris.gif");
+    background-size: cover;
+}
+table{
+    /*border: 1px solid black;*/
+    border-collapse: collapse;
+    max-width: 80%;
+    /*justify-content: center;*/
+    margin:auto; 
+    background-color: azure;
+}
+td, th{
+    padding: 8px;
+    text-align: center;
+    font-size: larger;
+    border: 1px solid black;
+    width: 50%;
+    margin: auto;
+
+}
+.heading{
+    display:block;
+    margin: 10px auto;
+    border: none;
+    text-align: center;
+    width: 100%;
+    font-family: "Acme", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: normal;
+}
+#res-heading{
+    display:block;
+    margin: 10px auto;
+    border: none;
+    text-align: center;
+    width: 100%;
+    font-family: "Acme", sans-serif;
+    font-weight: 200;
+    font-style: italic;
+    font-size: normal;
+    color: #c1121f;
+}
+#savebtn{
+    width: 100px;
+    margin: 20px auto;
+    display: block;
+    background-color: rgba(255, 255, 0, 0.897);
+    border-radius: 10px;
+}
+button{
+    background-color: rgba(0, 128, 0, 0.176);
+    border:1px solid black;
+    padding: 8px;
+}
+#winner{
+    color: rgba(0, 128, 0, 0.797);
+    font-weight: bold;
+    font-family: "Acme", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: larger;
+}
