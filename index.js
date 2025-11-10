@@ -1,11 +1,15 @@
 
+const saveBtn = document.getElementById("save-btn")
 const registerBtn = document.getElementById("register-btn")
 const saveNoBtn = document.getElementById("save-no-btn")
 const candidateNoInput = document.getElementById("candidate-no-input")
 const candidateNameInput = document.getElementById("candidate-name-input")
 const candidatePostInput = document.getElementById("candidate-post-input")
-const votingTable = document.getElementById("voting-table")
-const finalResult = document.getElementById("final-result")
+const voteBtn = document.getElementById("voting-table")
+const resultTable = document.getElementById("result-table")
+let indexOfRow = ""
+let voteCountIncrement = ""
+let voteCount = [0]
 let noOfCandidates = 0
 let nameOfCandidates = ""
 let postOfCandidates = ""
@@ -14,15 +18,30 @@ let tr = ""
 let td1 = ""
 let td2 = ""
 let td3 = ""
+let trr = ""
+let tdd1 = ""
+let tdd2 = ""
 let noRegistered = 0
+const candidateVoted = document.getElementById("candidate-voted")
 
-votingTable.addEventListener("click", function(event){
+saveBtn.addEventListener("click", function(){
+    for(let i = 0; i <= noRegistered; i++){
+        let row = resultTable.rows[i+1]
+        let totalVote = row.cells[1]
+        totalVote.innerHTML = `${voteCount[i+1]}`
+    }   
+})
+
+
+voteBtn.addEventListener("click", function(event){
     if (event.target.tagName === "BUTTON"){
         let buttonClicked = event.target
         let row = buttonClicked.closest('tr')
-        let candidateName = row.cells[0].textContent;
-        let candidatePosition = row.cells[1].textContent;
-        finalResult.innerHTML = `${candidateName} was voted`
+        let candidateName = row.cells[0].textContent
+        indexOfRow = row.rowIndex
+        voteCountIncrement = voteCount[indexOfRow]++
+        candidateVoted.textContent = `you voted ${candidateName}`
+        
     }
 })
 
@@ -37,7 +56,7 @@ registerBtn.addEventListener("click", function(){
     voteBtnEl = document.createElement("button")
     voteBtnEl.textContent = "VOTE"
     if(nameOfCandidates && noRegistered < noOfCandidates && postOfCandidates){
-        tr = votingTable.insertRow()
+        tr = voteBtn.insertRow()
         td1 = tr.insertCell(0)
         td1.innerHTML = nameOfCandidates
         td2 = tr.insertCell(1)
@@ -47,98 +66,17 @@ registerBtn.addEventListener("click", function(){
         noRegistered++
         candidateNameInput.value = ""
         candidatePostInput.value = ""
+        voteCount.push(0)
+        trr = resultTable.insertRow()
+        tdd1 = trr.insertCell(0)
+        tdd1.innerHTML = nameOfCandidates
+        tdd2 = trr.insertCell(1)
     }
-})   
+}) 
 
 
 
 
-//votes
-let vote = [
-    document.getElementById("vote1"),
-    document.getElementById("vote2"),
-    document.getElementById("vote3"),
-    document.getElementById("vote4")
-]
-
-//results
-let res = [
-    document.getElementById("res1"),
-    document.getElementById("res2"),
-    document.getElementById("res3"),
-    document.getElementById("res4")
-]
-
-//winner
-let winner = document.getElementById("winner")
-
-let count = [0, 0, 0, 0]
-
-function increment1() {
-    count[0]++
-    console.log(count[0])
-    vote[0].innerText = count[0]
-}
-
-function increment2() {
-    count[1]++
-    console.log(count[1])
-    vote[1].innerText = count[1]
-}
-
-function increment3() {
-    count[2]++
-    console.log(count[2])
-    vote[2].innerText = count[2]
-}
-
-function increment4() {
-    count[3]++
-    console.log(count[3])
-    vote[3].innerText = count[3]
-}
-
-function result() {
-    res[0].textContent = count[0]
-    res[1].textContent = count[1]
-    res[2].textContent = count[2]
-    res[3].textContent = count[3]
-
-    if (count[0] > count[1] && count[0] > count[2] && count[0] > count[3]) {
-        winner.textContent = "Winner: Candidate A"
-    }
-    else if (count[1] > count[0] && count[1] > count[2] && count[1] > count[3]) {
-        winner.textContent = "Winner: Candidate B"
-    }
-    else if (count[2] > count[0] && count[2] > count[1] && count[2] > count[3]) {
-        winner.textContent = "Winner: Candidate C"
-    }
-    else if (count[3] > count[0] && count[3] > count[1] && count[3] > count[2]) {
-        winner.textContent = "Winner: Candidate D"
-    }
-    else {
-        winner.textContent = "There is a Tie!"
-    }
-}
-
-function reset() {
-
-    count = [0, 0, 0, 0]
-    
-    vote[0].innerText = count[0]
-    vote[1].innerText = count[1]
-    vote[2].innerText = count[2]
-    vote[3].innerText = count[3]
-
-    
-    console.log(count)
-}
-
-function save(){
-    result();  
-    reset();
-      
-}
 
 
 
